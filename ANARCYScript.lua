@@ -1,6 +1,6 @@
 
 
-local ScriptLink = [[https://github.com/LAZERY8384/AnarcyScript]]
+local ScriptLink = [[https://raw.githubusercontent.com/LAZERY8384/AnarcyScript/main/ANARCYScript.lua]]
 
 --//Do not touch anything below this line, you may break it.
 local FeSource = nil;pcall(function()FeSource = game:GetService("HttpService"):GetAsync("https://raw.githubusercontent.com/WaverlyCole/FE-Compatibility-VoidSb-/master/translate.lua")end);
@@ -10,7 +10,7 @@ local FeConversion = loadstring(FeSource);local FeSucc,FeErr = pcall(FeConversio
 local Script = loadstring(ScriptSource);local Succ,Err = pcall(Script);if not Succ then warn(Err)error("Error loading script.",0) end;
 
 --requirements
-script_version = 1.0
+script_version = 1.1
 slaxdom = require("lib/slaxdom")
 slaxml = require("lib/slaxml")
 util.require_no_lag('natives-1640181023')
