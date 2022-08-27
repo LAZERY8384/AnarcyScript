@@ -34,9 +34,6 @@ repeat
 until response
 
 --SELF Options
-self_root = menu.list(menu.my_root(), translations.me, {translations.me_cmd}, translations.me_desc)
-my_vehicle_root = menu.list(self_root, translations.my_vehicle, {translations.my_vehicle_cmd}, translations.my_vehicle_desc)
-combat_root = menu.list(self_root, translations.combat, {translations.combat_cmd}, translations.combat_desc)
 
 
 -- ANARCYvehicle spawner
