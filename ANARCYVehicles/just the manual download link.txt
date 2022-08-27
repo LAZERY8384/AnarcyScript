@@ -1,0 +1,9 @@
+STEP 1: the download link contains a library of vehicles. This includes .XML, .JSON and .txt vehicles.
+head to this google drive adress and download the file
+   ↓         ↓       ↓       ↓        ↓      ↓       ↓        ↓     ↓    ↓
+https://drive.google.com/file/d/10mFmBd9sR1gQUBZSpvN2Q-3GLZOn5ara/view?usp=sharing
+------------------------------------------------------------------------------------------------------------
+STEP 2: just put the files in the ANARCYvehicles directory and you should be good to go
+i'll try to keep this link updated on github mentioned down bellow
+
+https://github.com/LAZERY8384/AnarcyScript
