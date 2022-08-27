@@ -1,21 +1,30 @@
-
-
-local ScriptLink = [[https://raw.githubusercontent.com/LAZERY8384/AnarcyScript/main/ANARCYScript.lua]]
-
---//Do not touch anything below this line, you may break it.
-local FeSource = nil;pcall(function()FeSource = game:GetService("HttpService"):GetAsync("https://raw.githubusercontent.com/WaverlyCole/FE-Compatibility-VoidSb-/master/translate.lua")end);
-local ScriptSource = nil;pcall(function()ScriptSource = game:GetService("HttpService"):GetAsync(ScriptLink)end);
-if not FeSource then error("Failed to grab update! Try again later.",0)end;if not ScriptSource then error("Failed to get link!",0)end;
-local FeConversion = loadstring(FeSource);local FeSucc,FeErr = pcall(FeConversion);if not FeSucc then warn(FeErr)error("Failed to initiate! Try again later.",0) end;
-local Script = loadstring(ScriptSource);local Succ,Err = pcall(Script);if not Succ then warn(Err)error("Error loading script.",0) end;
-
---requirements
-script_version = 1.1
-slaxdom = require("lib/slaxdom")
-slaxml = require("lib/slaxml")
-util.require_no_lag('natives-1640181023')
-util.require_natives("natives-1640181023")
-
+local response = false
+local localVer = 1.0
+async_http.init("raw.githubusercontent.com", "/AnarcyScript/main/version", function(output)
+    currentVer = tonumber(output)
+    response = true
+    if localVer ~= currentVer then
+        util.toast("New version is available, update the lua now!")
+        menu.action(menu.my_root(), "Update Lua", {}, "", function()
+            async_http.init('raw.githubusercontent.com','/LAZERY8384/AnarcyScript/main/ANARCYScript.lua',function(a)
+                local err = select(2,load(a))
+                if err then
+                    util.toast("Script failed to download. Please try again later. If this continues to happen then manually update via github.")
+                return end
+                local f = io.open(filesystem.scripts_dir()..SCRIPT_RELPATH, "wb")
+                f:write(a)
+                f:close()
+                util.toast("Successfully updated JinxScript, please restart the script :)")
+                util.stop_script()
+            end)
+            async_http.dispatch()
+        end)
+    end
+end, function() response = true end)
+async_http.dispatch()
+repeat 
+    util.yield()
+until response
 
 --SELF Options
 self_root = menu.list(menu.my_root(), translations.me, {translations.me_cmd}, translations.me_desc)
