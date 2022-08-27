@@ -6,7 +6,7 @@ util.require_natives(1651208000)
 
 
 local response = false
-local localVer = 1.0
+local localVer = 1.09
 async_http.init("raw.githubusercontent.com", "/AnarcyScript/main/version", function(output)
     currentVer = tonumber(output)
     response = true
@@ -471,14 +471,6 @@ end
 
 --spawning .json files
 
-
-util.on_stop(function ()
-    GRAPHICS.TERRAINGRID_ACTIVATE(false)
-    util.toast("Its sad to see you go, i hope you relaunch the script sometime")
-end)
-
 util.keep_running()
-
-
 --made by LAZERY#8384, feel free to send me improvement ideas
 --i made this script form bits of different scripts for differnet vehicle filetypes
