@@ -42,7 +42,7 @@ combat_root = menu.list(self_root, translations.combat, {translations.combat_cmd
 -- ANARCYvehicle spawner
 
 
--spawning Heavily modded vehicles 
+--spawning Heavily modded vehicles 
 vehiclesHM_dir = filesystem.scripts_dir() .. '\\heavily modded vehicles\\'
 if not filesystem.is_dir(vehiclesHM_dir) then
     filesystem.mkdir(vehiclesHM_dir)
