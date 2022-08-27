@@ -1,12 +1,37 @@
-
-
---requirements
-script_version = 1.1
 slaxdom = require("lib/slaxdom")
 slaxml = require("lib/slaxml")
 util.require_no_lag('natives-1640181023')
 util.require_natives("natives-1640181023")
+util.require_natives(1651208000)
 
+
+local response = false
+local localVer = 1.0
+async_http.init("raw.githubusercontent.com", "/AnarcyScript/main/version", function(output)
+    currentVer = tonumber(output)
+    response = true
+    if localVer ~= currentVer then
+        util.toast("New version is available, update the lua now!")
+        menu.action(menu.my_root(), "Update Lua", {}, "", function()
+            async_http.init('raw.githubusercontent.com','/LAZERY8384/AnarcyScript/main/ANARCYScript.lua',function(a)
+                local err = select(2,load(a))
+                if err then
+                    util.toast("Script failed to download. Please try again later. If this continues to happen then manually update via github.")
+                return end
+                local f = io.open(filesystem.scripts_dir()..SCRIPT_RELPATH, "wb")
+                f:write(a)
+                f:close()
+                util.toast("Successfully updated JinxScript, please restart the script :)")
+                util.stop_script()
+            end)
+            async_http.dispatch()
+        end)
+    end
+end, function() response = true end)
+async_http.dispatch()
+repeat 
+    util.yield()
+until response
 
 --SELF Options
 self_root = menu.list(menu.my_root(), translations.me, {translations.me_cmd}, translations.me_desc)
